@@ -16,15 +16,15 @@ stores users and expenses. A user can have multiple expenses stored.
 * ### DELETE (api/v1/users/:userId)
     * delete user
 
-# Expense (api/v1/expenses)
+# Expense (api/v1/users/:userId/expenses)
 
-* ### GET (api/v1/expenses)
+* ### GET (api/v1/users/:userId/expenses)
     * get all expenses
-* ### POST (api/v1/expenses)
+* ### POST (api/v1/users/:userId/expenses)
     * create new expense for user
-* ### GET (api/v1/expenses/:expenseId)
+* ### GET (api/v1/users/:userId/expenses/:expenseId)
     * get expense by id
-* ### PUT (api/v1/expenses/:expenseId)
+* ### PUT (api/v1/users/:userId/expenses/:expenseId)
     * update expense
-* ### DELETE (api/v1/expenses/:expenseId)
+* ### DELETE (api/v1/users/:userId/expenses/:expenseId)
     * delete expense
