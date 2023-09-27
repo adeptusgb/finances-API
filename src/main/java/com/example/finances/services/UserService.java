@@ -6,23 +6,21 @@ import com.example.finances.exceptions.ResourceNotFoundException;
 import com.example.finances.DTO.mappers.UserDTOMapper;
 import com.example.finances.entities.user.User;
 import com.example.finances.repositories.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@RequiredArgsConstructor
 @Service
 public class UserService {
 
     private final UserRepository userRepository;
     private final UserDTOMapper userDTOMapper;
-
-    @Autowired
-    public UserService(UserRepository userRepository, UserDTOMapper userDTOMapper) {
-        this.userRepository = userRepository;
-        this.userDTOMapper = userDTOMapper;
-    }
+    private final PasswordEncoder passwordEncoder;
 
     public List<UserDTO> getAllUsers() {
         return userRepository.findAll()
@@ -39,26 +37,6 @@ public class UserService {
                 ));
     }
 
-    public UserDTO createUser(User user) {
-        if (userRepository.existsByUsername(user.getUsername())) {
-            throw new DuplicateResourceException("username \"%s\" taken".formatted(user.getUsername()));
-        }
-
-        if (!user.getUsername().trim().isEmpty()
-                && !user.getPassword().trim().isEmpty()) {
-
-            User createdUser =
-                    new User(
-                            user.getUsername(),
-                            user.getPassword()
-                    );
-
-            userRepository.save(createdUser);
-            return userDTOMapper.apply(createdUser);
-        }
-        throw new IllegalStateException("username or password invalid");
-    }
-
     public void updateUser(String username, String password, Long userId) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException(
@@ -72,7 +50,7 @@ public class UserService {
             user.setUsername(username);
         }
         if(password != null) {
-            user.setPassword(password);
+            user.setPassword(passwordEncoder.encode(password));
         }
         userRepository.save(user);
     }

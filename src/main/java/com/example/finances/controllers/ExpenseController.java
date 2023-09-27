@@ -3,6 +3,7 @@ package com.example.finances.controllers;
 import com.example.finances.DTO.ExpenseDTO;
 import com.example.finances.entities.Expense;
 import com.example.finances.services.ExpenseService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,16 +12,12 @@ import org.springframework.web.bind.annotation.*;
 import java.math.BigDecimal;
 import java.util.List;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping(path = "api/v1/users/{userId}/expenses")
 public class ExpenseController {
 
     private final ExpenseService expenseService;
-
-    @Autowired
-    public ExpenseController(ExpenseService expenseService) {
-        this.expenseService = expenseService;
-    }
 
     @GetMapping
     public ResponseEntity<List<ExpenseDTO>> getAllExpenses(@PathVariable("userId") Long userId){

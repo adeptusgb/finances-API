@@ -8,6 +8,7 @@ import com.example.finances.exceptions.ResourceAccessDeniedException;
 import com.example.finances.exceptions.ResourceNotFoundException;
 import com.example.finances.repositories.ExpenseRepository;
 import com.example.finances.repositories.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,19 +16,13 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@RequiredArgsConstructor
 @Service
 public class ExpenseService {
 
     private final ExpenseDTOMapper expenseDTOMapper;
     private final ExpenseRepository expenseRepository;
     private final UserRepository userRepository;
-
-    @Autowired
-    public ExpenseService(ExpenseDTOMapper expenseDTOMapper, ExpenseRepository expenseRepository, UserRepository userRepository) {
-        this.expenseDTOMapper = expenseDTOMapper;
-        this.expenseRepository = expenseRepository;
-        this.userRepository = userRepository;
-    }
 
     public List<ExpenseDTO> getAllExpenses(Long userId){
         return expenseRepository.findByUser_Id(userId)

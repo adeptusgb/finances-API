@@ -14,4 +14,3 @@ public class FinancesApplication {
 
 // TO-DO
 // java tests
-// auth
