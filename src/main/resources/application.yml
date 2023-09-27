@@ -13,3 +13,5 @@ spring:
         format_sql: true
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+secret: ${TOKEN_SECRET:215032fa0e873742ba75a371f03f375075d69abb3326f9a5f1e421a07d0ac568}
