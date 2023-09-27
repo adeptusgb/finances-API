@@ -1,5 +1,6 @@
 package com.example.finances.entities;
 
+import com.example.finances.entities.user.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

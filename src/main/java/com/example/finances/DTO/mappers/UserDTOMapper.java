@@ -1,7 +1,7 @@
 package com.example.finances.DTO.mappers;
 
 import com.example.finances.DTO.UserDTO;
-import com.example.finances.entities.User;
+import com.example.finances.entities.user.User;
 import com.example.finances.services.ExpenseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

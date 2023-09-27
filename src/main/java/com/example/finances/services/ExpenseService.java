@@ -3,7 +3,7 @@ package com.example.finances.services;
 import com.example.finances.DTO.ExpenseDTO;
 import com.example.finances.DTO.mappers.ExpenseDTOMapper;
 import com.example.finances.entities.Expense;
-import com.example.finances.entities.User;
+import com.example.finances.entities.user.User;
 import com.example.finances.exceptions.ResourceAccessDeniedException;
 import com.example.finances.exceptions.ResourceNotFoundException;
 import com.example.finances.repositories.ExpenseRepository;

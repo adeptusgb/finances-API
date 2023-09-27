@@ -1,7 +1,7 @@
 package com.example.finances.controllers;
 
 import com.example.finances.DTO.UserDTO;
-import com.example.finances.entities.User;
+import com.example.finances.entities.user.User;
 import com.example.finances.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

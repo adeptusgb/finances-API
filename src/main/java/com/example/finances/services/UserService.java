@@ -4,7 +4,7 @@ import com.example.finances.DTO.UserDTO;
 import com.example.finances.exceptions.DuplicateResourceException;
 import com.example.finances.exceptions.ResourceNotFoundException;
 import com.example.finances.DTO.mappers.UserDTOMapper;
-import com.example.finances.entities.User;
+import com.example.finances.entities.user.User;
 import com.example.finances.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
