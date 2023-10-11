@@ -26,4 +26,14 @@ public class GeneralExceptionHandler {
     ){
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
     }
+
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    @ExceptionHandler({
+            InvalidCredentialsException.class
+    })
+    public ResponseEntity<String> handleForbiddenException(
+            Exception e
+    ){
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.getMessage());
+    }
 }
